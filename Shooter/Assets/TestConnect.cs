@@ -1,13 +1,27 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestConnect : MonoBehaviour
+public class TestConnect : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
-        PhotonNetwork.GameVersion = "0.0.1";
+        print("Connecting to server");
+        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        print("Connected to server");
+        print(PhotonNetwork.LocalPlayer.NickName);
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        print("Disconnected from server for reason: " + cause.ToString());
     }
 }
