@@ -17,6 +17,11 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
         _roomsCanvases = canvases;
     }
 
+    public override void OnJoinedRoom()
+    {
+        _roomsCanvases.CurrentRoomCanvas.Show();
+    }
+
     public void OnClick_CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
