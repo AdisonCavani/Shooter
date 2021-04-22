@@ -1,10 +1,11 @@
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerListing : MonoBehaviour
+public class PlayerListing : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private Text _text;
@@ -14,7 +15,23 @@ public class PlayerListing : MonoBehaviour
     public void SetPlayerInfo(Player player)
     {
         Player = player;
+        SetPlayerText(player);
+    }
 
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+        if (targetPlayer != null && targetPlayer == Player)
+        {
+            if (changedProps.ContainsKey("RandomNumber"))
+            {
+                SetPlayerText(targetPlayer);
+            }
+        }
+    }
+
+    private void SetPlayerText(Player player)
+    {
         int result = -1; // Default random number
         if (player.CustomProperties.ContainsKey("RandomNumber"))
         {

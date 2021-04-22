@@ -19,7 +19,8 @@ public class RandomCustomPropertyGenerator : MonoBehaviour
         _text.text = result.ToString();
 
         _myCustomProperties["RandomNumber"] = result;
-        PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties;
+        PhotonNetwork.SetPlayerCustomProperties(_myCustomProperties);
+        //PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties; // Obsolete
     }
 
     public void OnClick_Button()

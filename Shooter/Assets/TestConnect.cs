@@ -8,6 +8,8 @@ public class TestConnect : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
+        //AuthenticationValues authValues = new AuthenticationValues("0"); // Comment out!
+        //PhotonNetwork.AuthValues = authValues; // Comment out!
         print("Connecting to server");
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
