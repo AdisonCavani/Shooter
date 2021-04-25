@@ -108,11 +108,13 @@ namespace Console
             if (Input.GetKeyDown(KeyCode.BackQuote)) // Console keybind
             {
                 consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy); // Toggle command
+                inputText.GetComponent<TMP_InputField>().text = "";
             }
 
             if (consoleCanvas.gameObject.activeInHierarchy)
             {
                 consoleInput.Select();
+                consoleInput.ActivateInputField();
 
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -124,6 +126,8 @@ namespace Console
                         inputText.GetComponent<TMP_InputField>().text = "";
                         consoleInput.Select();
                         consoleInput.ActivateInputField();
+
+                        
                     }
                 }
             }
