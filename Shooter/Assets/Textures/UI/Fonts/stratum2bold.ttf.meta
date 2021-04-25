@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: aa0d73b89b5e9d2418d6f705684013fb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Stratum2
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 44c455e35477a3341ad4c5b301496148, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
