@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Console
 {
@@ -119,8 +118,9 @@ namespace Console
                 {
                     if (inputText.GetComponent<TMP_InputField>().text != "")
                     {
-                        AddMessageToConsole(inputText.GetComponent<TMP_InputField>().text);
                         ParseInput(inputText.GetComponent<TMP_InputField>().text);
+
+                        // Clear console after Enter was pressed
                         inputText.GetComponent<TMP_InputField>().text = "";
                         consoleInput.Select();
                         consoleInput.ActivateInputField();
@@ -142,15 +142,16 @@ namespace Console
         private void ParseInput(string input)
         {
             string[] _input = input.Split(' ');
+            string msg = input;
 
             if (_input.Length == 0 || _input == null)
             {
-                Debug.LogWarning("Unknown command");
+                Debug.LogWarning("Unknown command \"" + msg + "\"");
                 return;
             }
             if (!Commands.ContainsKey(_input[0]))
             {
-                Debug.LogWarning("Unknown command");
+                Debug.LogWarning("Unknown command \"" + msg + "\"");
             }
             else
             {
