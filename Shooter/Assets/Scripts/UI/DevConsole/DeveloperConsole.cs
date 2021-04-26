@@ -126,8 +126,6 @@ namespace Console
                         inputText.GetComponent<TMP_InputField>().text = "";
                         consoleInput.Select();
                         consoleInput.ActivateInputField();
-
-                        
                     }
                 }
             }
