@@ -92,6 +92,7 @@ namespace Console
         private void CreateCommands()
         {
             CommandQuit.CreateCommand();
+            CommandQuitPrompt.CreateCommand();
             CommandClear.CreateCommand();
         }
 
