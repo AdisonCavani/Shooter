@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Console
 {
@@ -19,8 +20,8 @@ namespace Console
 
 #if UNITY_EDITOR
             string addMessage = " command has been added to the console";
-            Debug.Log(Name + addMessage);
 #endif
+            Debug.Log(Name + addMessage);
         }
 
         public abstract void RunCommand(string[] args);
@@ -36,6 +37,7 @@ namespace Console
         public TextMeshProUGUI consoleText;
         public GameObject inputText;
         public TMP_InputField consoleInput;
+        public ScrollRect scrollRect;
 
         [Header("UI Colors")]
         public static string LogColor = "#dadada";
@@ -134,6 +136,8 @@ namespace Console
                         {
                             StoreCommandInTheClipboard(inputText.GetComponent<TMP_InputField>().text);
                         }
+
+                        scrollRect.verticalNormalizedPosition = 0; // Scroll down if command was send
 
                         // Clear console after Enter was pressed
                         inputText.GetComponent<TMP_InputField>().text = "";

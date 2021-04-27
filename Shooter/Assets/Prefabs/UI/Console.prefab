@@ -1027,7 +1027,7 @@ MonoBehaviour:
   consoleText: {fileID: 5278553534183931265}
   inputText: {fileID: 5278553533369384234}
   consoleInput: {fileID: 5278553533369384148}
-  _clipboardSize: 100
+  scrollRect: {fileID: 5278553533802581285}
 --- !u!1 &5278553533621261296
 GameObject:
   m_ObjectHideFlags: 0
