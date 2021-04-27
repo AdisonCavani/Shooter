@@ -7,15 +7,22 @@ using System.Globalization;
 
 public class LogManager : MonoBehaviour
 {
-    static string path;
-    const string logPath = "/Shooter/log.txt";
+    const string shooter = "\\Shooter";
+    const string log = "\\log.txt";
+    string docsPath;
+    string shooterPath;
+    string logPath;
     CultureInfo cultureInfo = new CultureInfo("en-US", false); // Date formatting to English
-    string spacing = " | ";
+    const string spacing = " | ";
 
-    void Start()
+    private void Awake()
     {
-        path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + logPath;
-        CreateFile(path);
+        docsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        shooterPath = docsPath + shooter;
+        logPath = shooterPath + log;
+        DirectoryInfo di = Directory.CreateDirectory(shooterPath);
+
+        CreateFile(logPath);
     }
 
     private void OnEnable()
@@ -30,37 +37,36 @@ public class LogManager : MonoBehaviour
 
     private void HandleLog(string logMessage, string stackTrace, LogType type)
     {
-        path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + logPath;
         TimeSpan timeSpan = TimeSpan.FromSeconds(Time.realtimeSinceStartup);
         string time = string.Format("{0:D2}:{1:D2}:{2:D2}:{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
 
         if (type.ToString() == "Warning")
         {
             string _message = "[" + type.ToString() + "] " + logMessage;
-            AddTextToLog(path, time, _message);
+            AddTextToLog(logPath, time, _message);
         }
         else if (type.ToString() == "Error")
         {
             string _message = "[" + type.ToString() + "] " + logMessage;
-            AddTextToLog(path, time, _message);
+            AddTextToLog(logPath, time, _message);
         }
         else
         {
             string _message = "[" + type.ToString() + "] " + logMessage;
-            AddTextToLog(path, time, _message);
+            AddTextToLog(logPath, time, _message);
         }
     }
 
-    void CreateFile(string path)
+    void CreateFile(string logPath)
     {
-        File.WriteAllText(path, "************ | Log created on: " + DateTime.Now.ToString("dddd", cultureInfo) + ", " +
+        File.WriteAllText(logPath, "************ | Log created on: " + DateTime.Now.ToString("dddd", cultureInfo) + ", " +
             DateTime.Now.ToString("dd MMMM yyyy", cultureInfo) + " @ " + DateTime.Now.ToString("T") + "\n" +
-            "================================================================\n"); // Create file with message
+            "==================================================================\n"); // Create file with message
     }
 
-    void AddTextToLog(string path, string time, string logMessage)
+    void AddTextToLog(string logPath, string time, string logMessage)
     {
         string message = time + spacing + logMessage + "\n";
-        File.AppendAllText(path, message);
+        File.AppendAllText(logPath, message);
     }
 }
