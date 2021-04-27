@@ -41,7 +41,14 @@ namespace Console
         public static string LogColor = "#dadada";
         public static string WarningColor = "#ffba32";
         public static string ErrorColor = "#f74000";
-        
+
+        [Header("Clipboard")]
+        private int _clipboardSize = 100;
+        private string[] _clipboard;
+        private int _clipboardIndexer = 0;
+        private int _clipboardCursor = 0;
+        public static string ClipboardCleared = $"\nConsole clipboard <color={LogColor}>cleared</color>";
+
 
         private void Awake()
         {
@@ -55,6 +62,7 @@ namespace Console
 
         private void Start()
         {
+            _clipboard = new string[_clipboardSize];
             consoleCanvas.gameObject.SetActive(false);
             CreateCommands();
         }
@@ -109,13 +117,12 @@ namespace Console
             if (Input.GetKeyDown(KeyCode.BackQuote)) // Console keybind
             {
                 consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy); // Toggle command
-                inputText.GetComponent<TMP_InputField>().text = "";
             }
 
             if (consoleCanvas.gameObject.activeInHierarchy)
             {
-                consoleInput.Select();
                 consoleInput.ActivateInputField();
+                consoleInput.Select();
 
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -123,12 +130,84 @@ namespace Console
                     {
                         ParseInput(inputText.GetComponent<TMP_InputField>().text);
 
+                        if (_clipboardSize != 0)
+                        {
+                            StoreCommandInTheClipboard(inputText.GetComponent<TMP_InputField>().text);
+                        }
+
                         // Clear console after Enter was pressed
                         inputText.GetComponent<TMP_InputField>().text = "";
-                        consoleInput.Select();
                         consoleInput.ActivateInputField();
+                        consoleInput.Select();
                     }
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (_clipboardSize != 0 && _clipboardIndexer != 0)
+                {
+                    if (_clipboardCursor == _clipboardIndexer)
+                    {
+                        _clipboardCursor--;
+                        consoleInput.text = _clipboard[_clipboardCursor];
+                    }
+                    else
+                    {
+                        if (_clipboardCursor > 0)
+                        {
+                            _clipboardCursor--;
+                            consoleInput.text = _clipboard[_clipboardCursor];
+                        }
+                        else
+                        {
+                            consoleInput.text = _clipboard[0];
+                        }
+                    }
+                    consoleInput.caretPosition = consoleInput.text.Length;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (_clipboardSize != 0 && _clipboardIndexer != 0)
+                {
+                    if (_clipboardCursor < _clipboardIndexer)
+                    {
+                        _clipboardCursor++;
+                        consoleInput.text = _clipboard[_clipboardCursor];
+                        consoleInput.caretPosition = consoleInput.text.Length;
+                    }
+                }
+            }
+
+            if (consoleCanvas.gameObject.activeInHierarchy == false) // Clear console
+            {
+                inputText.GetComponent<TMP_InputField>().text = "";
+            }
+
+        }
+
+        private void StoreCommandInTheClipboard(string command)
+        {
+            _clipboard[_clipboardIndexer] = command;
+
+            if (_clipboardIndexer < _clipboardSize - 1)
+            {
+                _clipboardIndexer++;
+                _clipboardCursor = _clipboardIndexer;
+            }
+            else if (_clipboardIndexer == _clipboardSize - 1)
+            {
+                // Clear clipboard & reset 
+                _clipboardIndexer = 0;
+                _clipboardCursor = 0;
+                for (int i = 0; i < _clipboardSize; i++)
+                {
+                    _clipboard[i] = string.Empty;
+                }
+
+                AddMessageToConsole(ClipboardCleared);
             }
         }
 
