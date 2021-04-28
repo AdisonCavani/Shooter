@@ -8,7 +8,7 @@ using System.Globalization;
 public class LogManager : MonoBehaviour
 {
     const string shooter = "\\Shooter";
-    const string log = "\\log.txt";
+    const string log = "\\game.log";
     string docsPath;
     string shooterPath;
     string logPath;
