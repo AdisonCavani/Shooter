@@ -61,7 +61,14 @@ public class LogManager : MonoBehaviour
     {
         File.WriteAllText(logPath, "************ | Log created on: " + DateTime.Now.ToString("dddd", cultureInfo) + ", " +
             DateTime.Now.ToString("dd MMMM yyyy", cultureInfo) + " @ " + DateTime.Now.ToString("T") + "\n" +
-            "==================================================================\n"); // Create file with message
+            "==================================================================\n" +
+            "************" + spacing + "[CPU] " + SystemInfo.processorType + "\n" +
+            "************" + spacing + "[RAM] " + SystemInfo.systemMemorySize + " MB" + "\n" +
+            "************" + spacing + "[GPU] " + SystemInfo.graphicsDeviceName + "\n" +
+            "************" + spacing + "[API] " + SystemInfo.graphicsDeviceVersion + "\n" +
+            "************" + spacing + "[OS] " + SystemInfo.operatingSystem + "\n" +
+            "------------------------------------------------------------------" + "\n"
+            ); // Create file with message
     }
 
     void AddTextToLog(string logPath, string time, string logMessage)
