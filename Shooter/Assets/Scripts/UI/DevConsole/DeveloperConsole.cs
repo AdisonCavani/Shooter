@@ -45,11 +45,13 @@ namespace Console
         public static string ErrorColor = "#f74000";
 
         [Header("Clipboard")]
-        private int _clipboardSize = 100;
-        private string[] _clipboard;
-        private int _clipboardIndexer = 0;
-        private int _clipboardCursor = 0;
+        private int clipboardSize = 100;
+        private string[] clipboard;
+        private int clipboardIndexer = 0;
+        private int clipboardCursor = 0;
         public static string ClipboardCleared = $"\nConsole clipboard <color={LogColor}>cleared</color>";
+
+        private int tabMinCharLength = 3;
 
 
         private void Awake()
@@ -64,7 +66,7 @@ namespace Console
 
         private void Start()
         {
-            _clipboard = new string[_clipboardSize];
+            clipboard = new string[clipboardSize];
             consoleCanvas.gameObject.SetActive(false);
             CreateCommands();
         }
@@ -132,7 +134,7 @@ namespace Console
                     {
                         ParseInput(inputText.GetComponent<TMP_InputField>().text);
 
-                        if (_clipboardSize != 0)
+                        if (clipboardSize != 0)
                         {
                             StoreCommandInTheClipboard(inputText.GetComponent<TMP_InputField>().text);
                         }
@@ -149,23 +151,23 @@ namespace Console
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (_clipboardSize != 0 && _clipboardIndexer != 0)
+                if (clipboardSize != 0 && clipboardIndexer != 0)
                 {
-                    if (_clipboardCursor == _clipboardIndexer)
+                    if (clipboardCursor == clipboardIndexer)
                     {
-                        _clipboardCursor--;
-                        consoleInput.text = _clipboard[_clipboardCursor];
+                        clipboardCursor--;
+                        consoleInput.text = clipboard[clipboardCursor];
                     }
                     else
                     {
-                        if (_clipboardCursor > 0)
+                        if (clipboardCursor > 0)
                         {
-                            _clipboardCursor--;
-                            consoleInput.text = _clipboard[_clipboardCursor];
+                            clipboardCursor--;
+                            consoleInput.text = clipboard[clipboardCursor];
                         }
                         else
                         {
-                            consoleInput.text = _clipboard[0];
+                            consoleInput.text = clipboard[0];
                         }
                     }
                     consoleInput.caretPosition = consoleInput.text.Length;
@@ -174,13 +176,35 @@ namespace Console
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (_clipboardSize != 0 && _clipboardIndexer != 0)
+                if (clipboardSize != 0 && clipboardIndexer != 0)
                 {
-                    if (_clipboardCursor < _clipboardIndexer)
+                    if (clipboardCursor < clipboardIndexer)
                     {
-                        _clipboardCursor++;
-                        consoleInput.text = _clipboard[_clipboardCursor];
+                        clipboardCursor++;
+                        consoleInput.text = clipboard[clipboardCursor];
                         consoleInput.caretPosition = consoleInput.text.Length;
+                    }
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                int inputLength = consoleInput.text.Length;
+
+                if (inputLength >= tabMinCharLength && consoleInput.text.Any(char.IsWhiteSpace) == false)
+                {
+                    foreach (var command in Commands)
+                    {
+                        string commandKey =
+                            command.Key.Length <= inputLength ? command.Key : command.Key.Substring(0, inputLength);
+
+                        if (consoleInput.text.ToLower().StartsWith(commandKey.ToLower()))
+                        {
+                            consoleInput.text = command.Key;
+
+                            consoleInput.caretPosition = command.Key.Length;
+                            break;
+                        }
                     }
                 }
             }
@@ -194,21 +218,21 @@ namespace Console
 
         private void StoreCommandInTheClipboard(string command)
         {
-            _clipboard[_clipboardIndexer] = command;
+            clipboard[clipboardIndexer] = command;
 
-            if (_clipboardIndexer < _clipboardSize - 1)
+            if (clipboardIndexer < clipboardSize - 1)
             {
-                _clipboardIndexer++;
-                _clipboardCursor = _clipboardIndexer;
+                clipboardIndexer++;
+                clipboardCursor = clipboardIndexer;
             }
-            else if (_clipboardIndexer == _clipboardSize - 1)
+            else if (clipboardIndexer == clipboardSize - 1)
             {
                 // Clear clipboard & reset 
-                _clipboardIndexer = 0;
-                _clipboardCursor = 0;
-                for (int i = 0; i < _clipboardSize; i++)
+                clipboardIndexer = 0;
+                clipboardCursor = 0;
+                for (int i = 0; i < clipboardSize; i++)
                 {
-                    _clipboard[i] = string.Empty;
+                    clipboard[i] = string.Empty;
                 }
 
                 AddMessageToConsole(ClipboardCleared);
