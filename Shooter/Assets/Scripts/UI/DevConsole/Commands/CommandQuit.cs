@@ -26,11 +26,13 @@ namespace Console
             if (Application.isEditor)
             {
 #if UNITY_EDITOR
+                Debug.Log("Quitting game (command)...");
                 UnityEditor.EditorApplication.isPlaying = false;
 #endif
             }
             else
             {
+                Debug.Log("Quitting game (command)...");
                 Application.Quit();
             }
         }

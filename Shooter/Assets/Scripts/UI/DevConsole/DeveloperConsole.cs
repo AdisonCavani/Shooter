@@ -20,8 +20,8 @@ namespace Console
 
 #if UNITY_EDITOR
             string addMessage = " command has been added to the console";
-#endif
             Debug.Log(Name + addMessage);
+#endif
         }
 
         public abstract void RunCommand(string[] args);
