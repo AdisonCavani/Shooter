@@ -23,16 +23,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            if (Application.isEditor)
-            {
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#endif
-            }
-            else
-            {
-                Application.Quit();
-            }
+            GameObject.Find("ExitMenuPrompt").transform.GetChild(0).gameObject.SetActive(true);
         }
 
         public static CommandQuitPrompt CreateCommand()

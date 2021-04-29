@@ -106,6 +106,7 @@ namespace Console
             CommandQuit.CreateCommand();
             CommandQuitPrompt.CreateCommand();
             CommandClear.CreateCommand();
+            CommandDisconnect.CreateCommand();
         }
 
         public static void AddCommandsToConsole(string _name, ConsoleCommand _command)
