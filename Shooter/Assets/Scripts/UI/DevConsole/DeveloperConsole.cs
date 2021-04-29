@@ -199,7 +199,7 @@ namespace Console
                         string commandKey =
                             command.Key.Length <= inputLength ? command.Key : command.Key.Substring(0, inputLength);
 
-                        if (consoleInput.text.ToLower().StartsWith(commandKey.ToLower()))
+                        if (consoleInput.text.ToLower().StartsWith(commandKey.ToLower()) && consoleInput.text.ToLower().Length <= commandKey.Length)
                         {
                             consoleInput.text = command.Key;
 
