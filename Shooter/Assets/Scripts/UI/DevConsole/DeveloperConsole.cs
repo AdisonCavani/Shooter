@@ -266,6 +266,8 @@ namespace Console
             }
             else
             {
+                consoleText.text += msg + "\n";
+
                 // Create a lit to leverage Linq
                 List<string> args = _input.ToList();
 
