@@ -8,7 +8,9 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 {
 
     private Vector2 pointerOffset;
+    [SerializeField]
     private RectTransform canvasRectTransform;
+    [SerializeField]
     private RectTransform panelRectTransform;
     private bool clampedToLeft;
     private bool clampedToRight;
@@ -18,12 +20,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void Start()
     {
 
-        Canvas canvas = GetComponentInParent<Canvas>();
-        if (canvas != null)
-        {
-            canvasRectTransform = canvas.transform as RectTransform;
-            panelRectTransform = transform as RectTransform;
-        }
+        //Canvas canvas = GetComponentInParent<Canvas>();
+        //if (canvas != null)
+        //{
+        //    canvasRectTransform = canvas.transform as RectTransform;
+        //    panelRectTransform = transform as RectTransform;
+        //}
         clampedToLeft = false;
         clampedToRight = false;
         clampedToTop = false;

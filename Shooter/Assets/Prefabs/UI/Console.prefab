@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 5278553533369384151}
   - component: {fileID: 5278553533369384148}
   - component: {fileID: 5278553533369384145}
+  - component: {fileID: 6580491894600287198}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -950,35 +951,32 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
+--- !u!114 &6580491894600287198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278553533369384234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a8fb610aabe9740b5dd2b054c90c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &5278553533545312394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1037,6 @@ GameObject:
   - component: {fileID: 5278553533621261299}
   - component: {fileID: 5278553533621261309}
   - component: {fileID: 5278553533621261298}
-  - component: {fileID: 8366731056367672782}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1108,18 +1105,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8366731056367672782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278553533621261296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: decdb6951503a7d429218297b0212bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5278553533802581307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1276,8 @@ GameObject:
   - component: {fileID: 5278553533950168082}
   - component: {fileID: 5278553533950168092}
   - component: {fileID: 5278553533950168093}
+  - component: {fileID: 447653653764925334}
+  - component: {fileID: 1387195791565885871}
   m_Layer: 5
   m_Name: ConsoleText
   m_TagString: Untagged
@@ -1414,6 +1401,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &447653653764925334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278553533950168083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decdb6951503a7d429218297b0212bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasRectTransform: {fileID: 5278553532464005538}
+  panelRectTransform: {fileID: 5278553533621261299}
+--- !u!114 &1387195791565885871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278553533950168083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f36b1ab5c6f0c40b081729d6bf881f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &5278553534183931271
 GameObject:
   m_ObjectHideFlags: 0
