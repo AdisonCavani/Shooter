@@ -7,6 +7,8 @@ public class DragWindow : MonoBehaviour, IDragHandler
 {
     [SerializeField]
     private RectTransform dragRectTransform;
+    [SerializeField]
+    private RectTransform canvasRectTransform;
 
     public void OnDrag(PointerEventData eventData)
     {
