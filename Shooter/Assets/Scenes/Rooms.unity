@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCursor: {fileID: 2800000, guid: 4a0fca1f55f8c2343be5bfc60252e3fe, type: 3}
   clickCursor: {fileID: 2800000, guid: f1476fde3065ef94da757552df459ac0, type: 3}
-  inputCursor: {fileID: 2800000, guid: d78d9df926441654cb9a3bbcb74ff990, type: 3}
+  inputCursor: {fileID: 2800000, guid: ec172d9219585e84084ec5085d86f8e3, type: 3}
 --- !u!4 &1673228478
 Transform:
   m_ObjectHideFlags: 0
