@@ -9,12 +9,7 @@ public class Crosshair : MonoBehaviour
     [Range(0f, 10f)] public uint thickness = 2; // Crosshair thickness
     [Range(0f, 25f)] public uint gap = 6; // Crosshair gap
 
-    public static uint red = 0;
-    public static uint green = 128;
-    public static uint blue = 0;
-    public static uint alpha = 100;
-
-    public Color crosshairColor = new Color(red, green, blue, alpha); // Crosshair color
+    public Color32 crosshairColor = new Color32(0, 255, 0, 255); // Crosshair color
 
     public bool dot = false; // Crosshair dot
     public bool refresh = false;
@@ -31,6 +26,7 @@ public class Crosshair : MonoBehaviour
         //    Refresh();
         //    refresh = false;
         //}
+
         Refresh();
     }
 
