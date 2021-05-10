@@ -114,6 +114,11 @@ namespace Console
             CommandCrosshairColorG.CreateCommand();
             CommandCrosshairColorB.CreateCommand();
             CommandCrosshairAlpha.CreateCommand();
+
+            CommandCrosshairDot.CreateCommand();
+            CommandCrosshairSize.CreateCommand();
+            CommandCrosshairGap.CreateCommand();
+            CommandCrosshairThickness.CreateCommand();
         }
 
         public static void AddCommandsToConsole(string _name, ConsoleCommand _command)
@@ -288,7 +293,7 @@ namespace Console
                     AddMessageToConsole("<b>Name:</b>");
                     AddMessageToConsole(Commands[_input[0]].Name + "\n");
                     AddMessageToConsole("<b>Command:</b>");
-                    AddMessageToConsole("<i>" + Commands[_input[0]].Command + "</i>\n");
+                    AddMessageToConsole(Commands[_input[0]].Command + "\n");
                     AddMessageToConsole("<b>Help:</b>");
                     AddMessageToConsole(Commands[_input[0]].Help);
                     AddMessageToConsole("___________________________________\n\n");

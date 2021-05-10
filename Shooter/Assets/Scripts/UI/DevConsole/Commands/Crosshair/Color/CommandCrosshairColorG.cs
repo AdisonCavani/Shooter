@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace Console
 {
-    public class CommandCrosshairColorB : ConsoleCommand
+    public class CommandCrosshairColorG : ConsoleCommand
     {
         public override string Name { get; protected set; }
         public override string Command { get; protected set; }
         public override string Description { get; protected set; }
         public override string Help { get; protected set; }
 
-        public CommandCrosshairColorB()
+        public CommandCrosshairColorG()
         {
-            Name = "Crosshair color blue value";
-            Command = "cl_crosshaircolor_b";
-            Description = "Change blue value in crosshair color";
-            Help = "Use this command to change blue value in crosshair color";
+            Name = "Crosshair color green value";
+            Command = "cl_crosshaircolor_g";
+            Description = "Change green value in crosshair color";
+            Help = "Use this command to change green value in crosshair color";
 
             AddCommandToConsole();
         }
@@ -28,12 +28,12 @@ namespace Console
             var obj = GameObject.Find("Crosshair");
 
             var crosshair = obj.GetComponent<Crosshair>();
-            crosshair.crosshairColor.b = (byte)Mathf.Clamp(byte.Parse(argument), 0, 255);
+            crosshair.greenColorValue = (byte)Mathf.Clamp(int.Parse(argument), 0, 255);
         }
 
-        public static CommandCrosshairColorB CreateCommand()
+        public static CommandCrosshairColorG CreateCommand()
         {
-            return new CommandCrosshairColorB();
+            return new CommandCrosshairColorG();
         }
     }
 }

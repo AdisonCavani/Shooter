@@ -17,11 +17,11 @@ namespace Console
             Command = "cl_crosshaircolor";
             Description = "Change crosshair color";
             Help = "Use this command to change crosshair color:\n" +
-                "0 - red\n" +
-                "1 - green\n" +
-                "2 - yellow\n" +
-                "3 - blue\n" +
-                "4 - cyan\n" +
+                "0 - <color=red>red</color>\n" +
+                "1 - <color=green>green</color>\n" +
+                "2 - <color=yellow>yellow</color>\n" +
+                "3 - <color=blue>blue</color>\n" +
+                "4 - <color=#00ffff>cyan</color>\n" +
                 "5 - custom";
 
             AddCommandToConsole();
@@ -36,32 +36,32 @@ namespace Console
 
             if (argument == "0")
             {
-                crosshair.crosshairColor = Color.red;
+                crosshair.customColor = 0;
             }
 
             else if (argument == "1")
             {
-                crosshair.crosshairColor = Color.green;
+                crosshair.customColor = 1;
             }
 
             else if (argument == "2")
             {
-                crosshair.crosshairColor = Color.yellow;
+                crosshair.customColor = 2;
             }
 
             else if (argument == "3")
             {
-                crosshair.crosshairColor = Color.blue;
+                crosshair.customColor = 3;
             }
 
             else if (argument == "4")
             {
-                crosshair.crosshairColor = Color.cyan;
+                crosshair.customColor = 4;
             }
 
             else if (argument == "5")
             {
-                crosshair.crosshairColor = Color.green; // TODO: Add custom color here
+                crosshair.customColor = 5;
             }
 
             else

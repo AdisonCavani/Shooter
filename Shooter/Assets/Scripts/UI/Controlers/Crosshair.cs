@@ -9,7 +9,12 @@ public class Crosshair : MonoBehaviour
     [Range(0f, 10f)] public uint thickness = 2; // Crosshair thickness
     [Range(0f, 25f)] public uint gap = 6; // Crosshair gap
 
-    public Color32 crosshairColor = new Color32(0, 255, 0, 255); // Crosshair color
+    public Color32 crosshairColor; // Crosshair color
+    public uint customColor;
+    public byte redColorValue;
+    public byte greenColorValue;
+    public byte blueColorValue;
+    public byte alphaColorValue;
 
     public bool dot = false; // Crosshair dot
     public bool refresh = false;
@@ -30,7 +35,7 @@ public class Crosshair : MonoBehaviour
         Refresh();
     }
 
-    public void CheckThickness()
+    private void CheckThickness()
     {
         if (thickness % 2 == 0 && gap % 2 == 1) // Thickness even, gap odd
         {
@@ -48,10 +53,39 @@ public class Crosshair : MonoBehaviour
         }
     }
 
-    public void Refresh()
+    private void CheckColor()
+    {
+        if (customColor == 0)
+        {
+            crosshairColor = Color.red;
+        }
+        else if (customColor == 1)
+        {
+            crosshairColor = Color.green;
+        }
+        else if (customColor == 2)
+        {
+            crosshairColor = Color.yellow;
+        }
+        else if (customColor == 3)
+        {
+            crosshairColor = Color.blue;
+        }
+        else if (customColor == 4)
+        {
+            crosshairColor = Color.cyan;
+        }
+        else if (customColor == 5)
+        {
+            crosshairColor = new Color32(redColorValue, greenColorValue, blueColorValue, alphaColorValue);
+        }
+    }
+
+    private void Refresh()
     {
         // Fix thickness and gap diff
         CheckThickness();
+        CheckColor();
 
         uint s, g, t;
 
