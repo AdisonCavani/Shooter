@@ -103,22 +103,22 @@ namespace Console
 
         private void CreateCommands()
         {
-            CommandQuit.CreateCommand();
-            CommandQuitPrompt.CreateCommand();
-            CommandClear.CreateCommand();
-            CommandDisconnect.CreateCommand();
+            CommandClear.CreateCommand(); // clear
+            CommandDisconnect.CreateCommand(); // disconnect
+            CommandQuit.CreateCommand(); // quit
+            CommandQuitPrompt.CreateCommand(); // quit_prompt
 
             // Crosshair
-            CommandCrosshairColor.CreateCommand();
-            CommandCrosshairColorR.CreateCommand();
-            CommandCrosshairColorG.CreateCommand();
-            CommandCrosshairColorB.CreateCommand();
-            CommandCrosshairAlpha.CreateCommand();
+            CommandCrosshairAlpha.CreateCommand(); // cl_crosshairalpha
+            CommandCrosshairColor.CreateCommand(); // cl_crosshaircolor
+            CommandCrosshairColorB.CreateCommand(); // cl_crosshaircolor_b
+            CommandCrosshairColorG.CreateCommand(); // cl_crosshaircolor_g
+            CommandCrosshairColorR.CreateCommand(); // cl_crosshaircolor_r
 
-            CommandCrosshairDot.CreateCommand();
-            CommandCrosshairSize.CreateCommand();
-            CommandCrosshairGap.CreateCommand();
-            CommandCrosshairThickness.CreateCommand();
+            CommandCrosshairDot.CreateCommand(); // cl_crosshairdot
+            CommandCrosshairGap.CreateCommand(); // cl_crosshairgap
+            CommandCrosshairSize.CreateCommand(); // cl_crosshairsize
+            CommandCrosshairThickness.CreateCommand(); // cl_crosshairthickness
         }
 
         public static void AddCommandsToConsole(string _name, ConsoleCommand _command)

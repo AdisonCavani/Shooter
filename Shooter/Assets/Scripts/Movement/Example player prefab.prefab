@@ -57,7 +57,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 90
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderSize: {x: 1, y: 2, z: 1}
-  collisionType: 0
   weight: 75
   rigidbodyPushForce: 2
   solidCollider: 0
@@ -138,6 +137,8 @@ MonoBehaviour:
   crouchingSpeed: 10
   crouchingEnabled: 1
   slidingEnabled: 0
+  laddersEnabled: 1
+  supportAngledLadders: 1
   useStepOffset: 0
   stepOffset: 0.35
   movementConfig:
@@ -223,7 +224,7 @@ MonoBehaviour:
   verticalSensitivity: 1
   minYRotation: -90
   maxYRotation: 90
-  bodyRotation: 0
-  cameraRotation: {x: 0, y: 0, z: 0}
-  leanInput: 0
-  sway: 0
+  punchDamping: 9
+  punchSpringConstant: 65
+  punchAngle: {x: 0, y: 0}
+  punchAngleVel: {x: 0, y: 0}
