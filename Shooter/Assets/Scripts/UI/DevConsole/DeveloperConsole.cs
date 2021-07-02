@@ -138,6 +138,9 @@ namespace Console
 
             if (consoleCanvas.gameObject.activeInHierarchy)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
                 consoleInput.ActivateInputField();
                 consoleInput.Select();
 
